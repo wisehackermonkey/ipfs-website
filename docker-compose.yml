@@ -1,0 +1,17 @@
+# docker run -d --name ipfs_host -v $env:ipfs_staging:/export -v $env:ipfs_data:/data/ipfs -p 4001:4001 -p 127.0.0.1:8080:8080 -p 127.0.0.1:5001:5001 ipfs/go-ipfs:latest
+version: '3'
+services:
+  ipfs:
+    image: ipfs/go-ipfs:latest 
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+      - "4001:4001"
+    volumes: 
+        - "./staging:/export"
+        -  "./data:/data/ipfs"
+  # docker run -it --rm -p 3000:3000 wisehackermonkey/ipfs-website:latest
+  web:
+    build: ./
+    ports:
+        - "3000:3000"

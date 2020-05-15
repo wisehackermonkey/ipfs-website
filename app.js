@@ -12,7 +12,7 @@ const fileUpload = require("express-fileupload")
 const fs = require("fs")
 
 //ipfs connect locally setup
-const ipfs = new ipfsClient({host: "127.0.0.1", port: "5001", protocol: "http"})
+const ipfs = new ipfsClient({host: "ipfs", port: "5001", protocol: "http"})
 const app = express()
 
 
