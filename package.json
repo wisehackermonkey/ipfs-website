@@ -1,0 +1,26 @@
+{
+  "name": "ipfs-website",
+  "version": "1.0.0",
+  "description": " my first forey into ipfs web deveoplment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wisehackermonkey/ipfs-website.git"
+  },
+  "author": "wisehackermonkey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wisehackermonkey/ipfs-website/issues"
+  },
+  "homepage": "https://github.com/wisehackermonkey/ipfs-website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "ipfs-http-client": "^44.0.3"
+  }
+}
