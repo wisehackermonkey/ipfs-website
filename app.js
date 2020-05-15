@@ -12,7 +12,7 @@ const fileUpload = require("express-fileupload")
 const fs = require("fs")
 
 //ipfs connect locally setup
-const ipfs = new ipfsClient({host: "localhost", port: "5001", protocol: "http"})
+const ipfs = new ipfsClient({host: "127.0.0.1", port: "5001", protocol: "http"})
 const app = express()
 
 
@@ -33,7 +33,7 @@ app.get("/", (req,res)=>{
 app.post("/upload", (req,res)=>{
     const file = req.files.file
 
-    const filename = req.body.filename
+    const filename = req.body.fileame
     const filepath = "files/" + filename
 
     //move the file to location on server
@@ -43,7 +43,7 @@ app.post("/upload", (req,res)=>{
             return res.status(500).send(err)
         }
 
-        cosnt filehash = await addFile(filename, filepath)
+        const filehash = await addFile(filename, filepath)
         fs.unlink(filepath,(err)=>{
             if(err){console.log(err)}
         })
@@ -55,10 +55,17 @@ app.post("/upload", (req,res)=>{
 
 //add file from disk to ipfs network
 //returns result hash from ipfs network
-const addFile = async(filename,filepath) => {
-    const file = fs.readFileSync(filepath)
-    const fileAdded = await ipfs.add({path: filename, content: file})
-    const fileHash = fileAdded[0].hash
+const addFile = async (fileName, filePath) => {
+    const file = fs.readFileSync(filePath);
+    let results = [];
+    for await (const result of ipfs.add({path: fileName, content: file})) {
+        results.push(result);
+    }
+    return results[0].cid;
+};
 
-    return fileHash
-}
+
+
+app.listen(3000, () => {
+    console.log(`Server started on 3000`);
+});

@@ -1,0 +1,45 @@
+package main
+
+import "fmt"
+
+// fibonacci is a function that returns
+// a function that returns an int.
+//Fn = Fn-1 + Fn-2
+//with seed values
+
+//F0 = 0 and F1 = 1.
+func fibonacci() func() int {
+	num := -1
+	return func() int {
+		num++
+		
+		fmt.Println("num->",num)
+		var a, b = 1, 0
+		current_num := num
+		for current_num >= 0 {
+			a, b = (a + b), a
+			current_num--
+		}
+		return a
+	}
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+
+	/*var num int = 10
+	var a, b = 1, 0
+	//var temp int
+
+	for num >= 0 {
+		a, b = (a + b), a
+		num--
+		fmt.Println(a)
+
+	}
+	fmt.Println(a)
+	*/
+}
