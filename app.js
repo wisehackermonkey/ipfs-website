@@ -16,6 +16,8 @@ const ipfs = new ipfsClient({host: "ipfs", port: "5001", protocol: "http"})
 const app = express()
 
 
+const PORT = 3000
+
 //using ejs template language
 app.set("view engine", 'ejs')
 
@@ -66,6 +68,6 @@ const addFile = async (fileName, filePath) => {
 
 
 
-app.listen(3000, () => {
-    console.log(`Server started on 3000`);
+app.listen(PORT, () => {
+    console.log(`Server started on localhost:${PORT}`);
 });
