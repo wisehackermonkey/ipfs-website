@@ -21,6 +21,13 @@ node ./app.js
 docker build -t wisehackermonkey/ipfs-website:latest .
 docker run -it --rm -p 3000:3000 wisehackermonkey/ipfs-website:latest
 ```
+# Publish
+```
+docker login
+docker tag wisehackermonkey/ipfs-website wisehackermonkey/ipfs-website
+docker push wisehackermonkey/ipfs-website:latest
+```
+
 # run using docker (compose file)
 ![Screenshot_3](/assets/Screenshot_3.jpg)
 ```bash
@@ -30,7 +37,9 @@ docker run -it --rm -p 3000:3000 wisehackermonkey/ipfs-website:latest
 open browser to localhost:3000d
 ```
 
-
+# Protip:
+#### if you dont have docker installed you can play with the app using
+# [play with docker](https://labs.play-with-docker.com/)
 # how to run ipfs in a container on windows powershell 
 ```powershell
 $env:ipfs_staging = "${PWD}\staging"
@@ -43,6 +52,7 @@ docker run -it --rm --name ipfs_host -v $env:ipfs_staging:/export -v $env:ipfs_d
 
 
 # todo
-- 
+-  fix docker upload issue 
+![](https://i.postimg.cc/FHv6cJ2W/screenshot-7.png)
 ## resources
 - [Building an IPFS app with Node.js - YouTube](https://www.youtube.com/watch?v=RMlo9_wfKYU) (added 20200515)
